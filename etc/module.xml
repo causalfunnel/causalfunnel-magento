@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Module/etc/module.xsd">
+    <module name="CausalfunnelDatascience_Persona"  setup_version="1.0.0"/>
+
+    <type name="Magento\Framework\Module\Uninstall\Options">
+        <arguments>
+            <argument name="dataSetupClass" xsi:type="string">CausalfunnelDatascience\Persona\Setup\Uninstall</argument>
+        </arguments>
+    </type>
+</config>
