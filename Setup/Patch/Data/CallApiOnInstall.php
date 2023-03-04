@@ -51,7 +51,9 @@ class CallApiOnInstall implements DataPatchInterface
         $causalf_user_name = $user->getUsername();
         $causalf_user_email = $user->getEmail();
 
-        $data = ["plugin_status" => $causalf_plugin_status, "shop_name" => $causalf_shop_name, "date" => $causalf_date, "plugin_script_url" => $causalf_url, "store_username" => $causalf_user_name, "store_email" => $causalf_user_email,"store_url" => $causalf_store_url];
+        $platform = 'Magento';
+
+        $data = ["platform" => $platform, "plugin_status" => $causalf_plugin_status, "shop_name" => $causalf_shop_name, "date" => $causalf_date, "plugin_script_url" => $causalf_url, "store_username" => $causalf_user_name, "store_email" => $causalf_user_email,"store_url" => $causalf_store_url];
 
         $curl = new Curl();
         $curl->post($causalf_api_url, $data);
