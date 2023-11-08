@@ -11,12 +11,14 @@ use Magento\Framework\UrlInterface;
 class Uninstall implements UninstallInterface
 {
     protected $urlBuilder;
+    private $userFactory;
+
     public function __construct(
         UrlInterface $urlBuilder,
         \Magento\User\Model\UserFactory $userFactory
     ) {
         $this->urlBuilder = $urlBuilder;
-        $this->_userFactory = $userFactory;
+        $this->userFactory = $userFactory;
     }
 
     public function uninstall(SchemaSetupInterface $setup, ModuleContextInterface $context)
@@ -39,7 +41,7 @@ class Uninstall implements UninstallInterface
 
         
         $userId = 1; // The user id
-        $user = $this->_userFactory->create()->load($userId);
+        $user = $this->userFactory->create()->load($userId);
         $causalf_user_name = $user->getUsername();
         $causalf_user_email = $user->getEmail();
 

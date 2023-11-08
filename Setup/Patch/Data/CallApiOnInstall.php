@@ -11,8 +11,9 @@ use Magento\Framework\Setup\Patch\DataPatchInterface;
 class CallApiOnInstall implements DataPatchInterface
 {
     private $moduleDataSetup;
+    private $urlBuilder;
+    private $userFactory;
 
-    
     public function __construct(
         ModuleDataSetupInterface $moduleDataSetup,
         \Magento\Framework\UrlInterface $urlBuilder,
@@ -20,7 +21,7 @@ class CallApiOnInstall implements DataPatchInterface
     {
         $this->moduleDataSetup = $moduleDataSetup;
         $this->urlBuilder = $urlBuilder;
-        $this->_userFactory = $userFactory;
+        $this->userFactory = $userFactory;
     }
 
     public static function getDependencies()
@@ -47,7 +48,7 @@ class CallApiOnInstall implements DataPatchInterface
 
         
         $userId = 1; // The user id
-        $user = $this->_userFactory->create()->load($userId);
+        $user = $this->userFactory->create()->load($userId);
         $causalf_user_name = $user->getUsername();
         $causalf_user_email = $user->getEmail();
 
