@@ -24,6 +24,18 @@
       "CausalfunnelDatascience\\Persona\\": ""
     }
   },
+  "scripts": {
+    "post-install-cmd": [
+        "php bin/magento module:enable CausalfunnelDatascience_Persona --clear-static-content",
+        "php bin/magento setup:upgrade",
+        "php bin/magento setup:di:compile",
+        "php bin/magento cache:flush"
+    ],
+    "causalfunnel-uninstall": [
+      "php bin/magento module:uninstall CausalfunnelDatascience_Persona",
+      "composer remove causalfunnel-datascience/persona"
+    ]
+  },
   "minimum-stability": "stable",
   "prefer-stable": true
 }

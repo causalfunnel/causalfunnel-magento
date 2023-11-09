@@ -17,6 +17,6 @@ class HeadJs extends Template
 
     public function getCausalFunnelScriptUrl()
     {
-        return "https://www.causalfunnel.com/assets/cfCKYv1_" . str_replace(".", "-", $_SERVER['HTTP_HOST']) . "_ProdV1.js";
+        return "https://www.scripts.causalfunnel.com/assets/cfCKYv1_" . str_replace(".", "-", $_SERVER['HTTP_HOST']) . "_ProdV1.js";
     }
 }

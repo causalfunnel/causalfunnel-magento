@@ -46,3 +46,10 @@ To check if a script tag has been injected into the header of a website, you can
 •	Check if the script tag with the desired source URL is present in the head section.
 •	Alternatively, you can also use browser developer tools to inspect the website's DOM and check if the script tag has been dynamically added to the head section. To do this, you can use the "Elements" or "Sources" panel of the developer tools, depending on your browser.
 
+Uninstalling the Extension:
+For a clean uninstallation, run the following command in your Magento root directory:
+
+composer causalfunnel-uninstall
+
+This command will cleanly uninstall the CausalFunnel Datascience extension from your Magento setup.
+

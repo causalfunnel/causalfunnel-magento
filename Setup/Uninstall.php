@@ -34,7 +34,7 @@ class Uninstall implements UninstallInterface
         
         
         $causalf_plugin_status = "Uninstalled";
-        $causalf_api_url = 'https://us-central1-causalfunnel-21.cloudfunctions.net/WordPressPluginWebHook/';
+        $causalf_api_url = 'https://us-central1-causalfunnel-21.cloudfunctions.net/MagentoPluginWebHook/';
 
         
         $causalf_date = gmdate('Y-m-d H:i:s');
