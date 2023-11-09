@@ -4,8 +4,10 @@ namespace CausalfunnelDatascience\Persona\Setup;
 use Magento\Framework\Setup\ModuleContextInterface;
 use Magento\Framework\Setup\UninstallInterface;
 use Magento\Framework\Setup\SchemaSetupInterface;
+use Magento\Framework\Setup\ModuleDataSetupInterface;
 use Magento\Framework\HTTP\Client\Curl;
 use Magento\Framework\UrlInterface;
+use Magento\User\Model\UserFactory;
 
 
 class Uninstall implements UninstallInterface
@@ -15,7 +17,7 @@ class Uninstall implements UninstallInterface
 
     public function __construct(
         UrlInterface $urlBuilder,
-        \Magento\User\Model\UserFactory $userFactory
+        UserFactory $userFactory
     ) {
         $this->urlBuilder = $urlBuilder;
         $this->userFactory = $userFactory;
@@ -53,5 +55,24 @@ class Uninstall implements UninstallInterface
         $curl->post($causalf_api_url, $data);
         $response = $curl->getBody();
         $statusCode = $curl->getStatus();
+
+        $this->removePatchFromList($setup);
+    }
+
+    /**
+     * Remove entries from patch_list table.
+     *
+     * @param SchemaSetupInterface $setup
+     */
+    private function removePatchFromList(SchemaSetupInterface $setup)
+    {
+        $setup->startSetup();
+        $connection = $setup->getConnection();
+
+        $patchName = 'CausalfunnelDatascience\Persona\Setup\Patch\Data\CallApiOnInstall';
+
+        $connection->delete($setup->getTable('patch_list'), ['patch_name = ?' => $patchName]);
+
+        $setup->endSetup();
     }
 }
