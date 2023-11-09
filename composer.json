@@ -2,7 +2,7 @@
   "name": "causalfunnel-datascience/persona",
   "description": "Predicting buying intent in the post cookie world!",
   "type": "magento2-module",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "require": {
     "php": ">=8.1.0"
   },
